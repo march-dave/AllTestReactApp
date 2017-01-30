@@ -32,9 +32,7 @@ const counterReducer = (state=initialState, action) => {
 // Store
 const store = createStore(counterReducer);
 
-
-
-ReactDOM.render(<
-    App /> ,
-    document.getElementById('root')
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
 );
