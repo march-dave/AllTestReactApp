@@ -28,10 +28,31 @@ const counterReducer = (state = initialState, action) => {
   }
 }
 
+const store = createStore(counterReducer);
+
+class myApp extends React.Component {
+
+  onClick() {
+    this.props.store.dispatch(increase(1));
+  }
+
+  render() {
+    return(
+
+      <div onClick={this.onClick.bind(this)}>
+        <h1>{this.props.store.getState().value}</h1>
+      </div>
+    );
+  }
+}
+
+const render = () => {
+  ReactDOM.render(
+    <myApp/>,
+    document.getElementById('root')
+  );
+};
 
 
-
-ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-);
+store.subscribe(render);
+render();
