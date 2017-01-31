@@ -40,19 +40,30 @@ class myApp extends React.Component {
     return(
 
       <div onClick={this.onClick.bind(this)}>
-        <h1>{this.props.store.getState().value}</h1>
+        <h1>{this.props.store.getState().value}111</h1>
       </div>
     );
   }
 }
 
 const render = () => {
-  ReactDOM.render(
-    <myApp/>,
-    document.getElementById('root')
-  );
-};
 
+    const appElement = document.getElementById('root');
+    ReactDOM.render(
+        <App store={store}/>,
+        appElement
+    );
+};
 
 store.subscribe(render);
 render();
+
+// const render = () => {
+//   ReactDOM.render(
+//     <myApp/>,
+//     document.getElementById('root')
+//   );
+// };
+//
+// store.subscribe(render);
+// render();
