@@ -50,7 +50,7 @@ const render = () => {
 
     const appElement = document.getElementById('root');
     ReactDOM.render(
-        <myApp counterStore={store}/>,
+        <myApp store={counterStore}/>,
         appElement
     );
 };
