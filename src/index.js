@@ -28,7 +28,7 @@ const counterReducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(counterReducer);
+const counterStore = createStore(counterReducer);
 
 class myApp extends React.Component {
 
@@ -50,12 +50,12 @@ const render = () => {
 
     const appElement = document.getElementById('root');
     ReactDOM.render(
-        <App store={store}/>,
+        <myApp counterStore={store}/>,
         appElement
     );
 };
 
-store.subscribe(render);
+counterStore.subscribe(render);
 render();
 
 // const render = () => {
