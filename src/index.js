@@ -1,59 +1,78 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import App from './App';
-import './index.css';
+// import App from './App';
+// import './index.css';
 
 // action
-const INCREMENT = 'INCREMENT';
+const INCREMENT = "INCREMENT";
 function increase(diff) {
-  return {
-    type: INCREMENT,
-    addBy: diff
-  }
+    return {
+        type: INCREMENT,
+        addBy: diff
+    };
 }
 
 // reducer
 const initialState = {
-  value: 0
-}
+    value: 0
+};
 const counterReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return Object.assign({}, state, {
-          value: state.value + action.addBy
-      });
-      default:
-        return state;
-  }
+    switch(action.type) {
+        case INCREMENT:
+            return Object.assign({}, state, {
+                value: state.value + action.addBy
+            });
+        default:
+            return state;
+    }
 }
 
-const counterStore = createStore(counterReducer);
+const store = createStore(counterReducer);
 
 class myApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }
 
-  onClick() {
-    this.props.store.dispatch(increase(1));
-  }
+    render() {
 
-  render() {
-    return(
+        // let centerStyle = {
+        //     position: 'fixed',
+        //     top: '50%',
+        //     left: '50%',
+        //     transform: 'translate(-50%, -50%)',
+        //     WebkitUserSelect: 'none',
+        //     MozUserSelect: 'none',
+        //     MsUserSelect:'none',
+        //     userSelect: 'none',
+        //     cursor: 'pointer'
+        // };
 
-      <div onClick={this.onClick.bind(this)}>
-        <h1>{this.props.store.getState().value}111</h1>
-      </div>
-    );
-  }
+        return (
+            <div
+                onClick={ this.onClick }
+            >
+
+                <h1> {this.props.store.getState().value} </h1>
+            </div>
+        )
+    }
+
+    onClick() {
+        this.props.store.dispatch(increase(1));
+    }
 }
 
 const render = () => {
 
     const appElement = document.getElementById('root');
     ReactDOM.render(
-        <myApp store={counterStore}/>,
+        <myApp store={store}/>,
         appElement
     );
 };
 
-counterStore.subscribe(render);
+store.subscribe(render);
 render();
