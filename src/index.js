@@ -57,13 +57,3 @@ const render = () => {
 
 counterStore.subscribe(render);
 render();
-
-// const render = () => {
-//   ReactDOM.render(
-//     <myApp/>,
-//     document.getElementById('root')
-//   );
-// };
-//
-// store.subscribe(render);
-// render();
