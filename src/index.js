@@ -51,11 +51,9 @@ class myApp extends React.Component {
         // };
 
         return (
-            <div
-                onClick={ this.onClick }
-            >
-
-                <h1> {this.props.store.getState().value} </h1>
+            <div onClick={ this.onClick }>
+                <h1> {this.props.store.getState().value} 111 </h1>
+                <h2>222</h2>
             </div>
         )
     }
@@ -69,10 +67,27 @@ const render = () => {
 
     const appElement = document.getElementById('root');
     ReactDOM.render(
-        <myApp store={store}/>,
+        <myApp />,
         appElement
     );
 };
 
 store.subscribe(render);
 render();
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+//
+// export default class MyApp extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//
+//   render() {
+//     return (<div>MyComponent</div>);
+//   }
+// }
+//
+// ReactDOM.render(<MyApp />, document.getElementById('root') );
